@@ -48,6 +48,7 @@ uci set dhcp.@dnsmasq[0].rebind_protection="0"
 uci -q delete dhcp.@dnsmasq[0].server
 uci add_list dhcp.@dnsmasq[0].server="127.0.0.1#9053"
 uci add_list dhcp.@dnsmasq[0].server="::1#9053"
+uci commit dhcp
 
 # Firewall
 # Intercept TCP traffic
