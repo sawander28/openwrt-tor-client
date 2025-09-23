@@ -6,8 +6,8 @@ uci commit network
 service network restart
 
 # Announce IPv6 default route
-uci set network.lan.ip6class="local"
-uci commit network
+uci set dhcp.lan.ra_default=1
+uci commit dhcp
 service network restart
 
 # Using IPv6 by default

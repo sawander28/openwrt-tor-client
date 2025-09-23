@@ -14,6 +14,8 @@ DNSPort 0.0.0.0:9053
 DNSPort [::]:9053
 TransPort 0.0.0.0:9040
 TransPort [::]:9040
+SOCKSPort 0.0.0.0:9050
+SOCKSPort [::]:9050
 EOF
 cat << EOF >> /etc/sysupgrade.conf
 /etc/tor
