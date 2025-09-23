@@ -2,7 +2,7 @@
 
 # Install packages
 opkg update
-opkg install tor
+opkg install curl tor torsocks tor-geoip obfs4proxy
 
 # Configure Tor client
 cat << EOF > /etc/tor/custom
