@@ -18,6 +18,6 @@ service network restart
 
 # Missing GUA prefix
 # Suppress warnings
-#uci set dhcp.odhcpd.loglevel="3"
-#uci commit dhcp
-#service odhcpd restart
+uci set dhcp.odhcpd.loglevel="3"
+uci commit dhcp
+service odhcpd restart
