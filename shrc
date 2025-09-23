@@ -1,0 +1,15 @@
+export LANG=en_US.UTF-8
+export LC_COLLATE=C
+export EDITOR=vim
+export PAGER=less
+
+PATH=~/bin:/usr/sbin:/usr/bin:/sbin:/bin
+export PATH
+
+PS1='\[\e]0;\u@\h:\w\007\e[01;31m\]\h\[\e[01;34m\] \w \$\[\e[00m\] '
+
+alias ls='ls --color=auto'
+alias ll='ls -lh'
+alias la='ls -a'
+alias  l='ls -lha'
+alias df='df -h'
