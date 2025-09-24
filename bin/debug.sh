@@ -7,7 +7,6 @@
 #https://ipleak.net/
 #https://www.dnsleaktest.com/
 
-
 # Restart services
 service log restart; service firewall restart; service tor restart
  
