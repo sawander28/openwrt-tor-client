@@ -1,11 +1,11 @@
 #!/bin/sh
 
 # Verify tor connection status
-https://check.torproject.org/check/ip
+#https://check.torproject.org/check/ip
 
 # Check your IP and DNS provider.
-https://ipleak.net/
-https://www.dnsleaktest.com/
+#https://ipleak.net/
+#https://www.dnsleaktest.com/
 
 
 # Restart services
