@@ -94,4 +94,3 @@ uci set dhcp.@host[-1].duuid='00010001c792bc86b827ebc9aaca'
 uci set dhcp.@host[-1].leasetime='12h'
 uci set dhcp.@host[-1].dns='1'
 uci commit dhcp
-

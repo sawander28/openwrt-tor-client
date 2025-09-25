@@ -3,6 +3,7 @@
 # hidden Onion services
 # https://openwrt.org/docs/guide-user/services/tor/hs
 #
+# @TODO
 # required:
 # Client-Authorization
 # Selective routing
