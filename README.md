@@ -6,7 +6,7 @@ BusyBox v1.36.1 (2025-06-23 20:40:36 UTC) built-in shell (ash)
  |_______||   __|_____|__|__||________||__|  |____|
           |__| W I R E L E S S   F R E E D O M
  
- #### OpenWrt Tor Onion Router ####
+#### OpenWrt Tor Onion Router ####
 
 #### Tor manual ####
 https://2019.www.torproject.org/docs/tor-manual.html.en
