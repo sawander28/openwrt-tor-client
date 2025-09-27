@@ -87,9 +87,9 @@ if [ -f /etc/init.d/tor ]; then
     echo "VirtualAddrNetwork 10.192.0.0/10" >> /etc/tor/torrc
     echo "AutomapHostsOnResolve 1" >> /etc/tor/torrc
     echo "TransPort 9040" >> /etc/tor/torrc
-    echo "TransListenAddress 192.168.2.1" >> /etc/tor/torrc
+    echo "TransListenAddress 192.168.1.1" >> /etc/tor/torrc
     echo "DNSPort 9053" >> /etc/tor/torrc
-    echo "DNSListenAddress 192.168.2.1" >> /etc/tor/torrc
+    echo "DNSListenAddress 192.168.1.1" >> /etc/tor/torrc
     
     /etc/init.d/tor enable
 fi
