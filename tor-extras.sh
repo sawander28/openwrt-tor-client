@@ -1,5 +1,5 @@
 uci add firewall rule
-uci set firewall.@rule[-1]._name='Allow-Ping'
+uci set firewall.@rule[-1].name='Allow-Ping'
 uci set firewall.@rule[-1].src='wan'
 uci set firewall.@rule[-1].target='ACCEPT'
 uci set firewall.@rule[-1].proto='ICMP'
@@ -9,7 +9,7 @@ uci commit firewall
 service firewall restart
 
 uci add firewall rule
-uci set firewall.@rule[-1]._name='Allow Ping6'
+uci set firewall.@rule[-1].name='Allow Ping6'
 uci set firewall.@rule[-1].src='wan'
 uci set firewall.@rule[-1].target='ACCEPT'
 uci set firewall.@rule[-1].proto='ICMP'
@@ -38,14 +38,17 @@ uci set firewall.@redirect[-1].src='lan'
 uci set firewall.@redirect[-1].src_dport='5353'
 uci set firewall.@redirect[-1].dest_port='53'
 uci commit firewall
+service firewall reload
 
-# On the end
-/etc/init.d/firewall reload
 uci set system.ntp.enable_server='1'
 uci set system.@system[0].timezone='Europe/Berlin'
 uci set system.ntp.enable_server='1'
 uci set system.ntp.interface='lan'
+uci commit system
+
 uci set luci.main.mediaurlbase=/luci-static/bootstrap-light
+uci commit luci
+
 # set loopback device as dns for IPv4 & IPv6
 uci set network.lan.peerdns='0'
 uci set network.lan.dns='127.0.0.1'

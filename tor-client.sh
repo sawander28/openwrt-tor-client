@@ -2,9 +2,7 @@
 
 # Install packages
 opkg update
-opkg install bind-utils curl ethtool netcat nmap-ssl ss tor torsocks socat tcpdump
-opkg install nfs-utils kmod-fs-nfs-v4
-opkg install snowflake-client snowflake-proxy snowflake-probetest
+opkg install curl netcat tcpdump ethtool nmap-ssl ss tcpdump tor torsocks socat
 
 # Configure Tor client
 cat << EOF > /etc/tor/custom
@@ -15,6 +13,7 @@ VirtualAddrNetworkIPv6 [fc00::]/8
 DNSPort 0.0.0.0:9053
 DNSPort [::]:9053
 TransPort 0.0.0.0:9040
+TransListenAddress 192.168.1.1
 TransPort [::]:9040
 SOCKSPort 0.0.0.0:9050
 SOCKSPort [::]:9050
@@ -86,8 +85,8 @@ uci commit network
 service network restart
 
 # Announce IPv6 default route
-uci set dhcp.lan.ra_default=1
-uci commit dhcp
+uci set dhcp.lan.ra_default='1'
+uci commit dhcp.lan
 service network restart
 
 # Using IPv6 by default
@@ -97,7 +96,6 @@ uci commit network
 service network restart
 
 # Missing GUA prefix
-# Suppress warnings
 uci set dhcp.odhcpd.loglevel="3"
 uci commit dhcp
 service odhcpd restart
