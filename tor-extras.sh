@@ -1,6 +1,6 @@
 uci add firewall rule
 uci set firewall.@rule[-1].name='Allow-Ping'
-uci set firewall.@rule[-1].src='wan'
+uci set firewall.@rule[-1].src='lan'
 uci set firewall.@rule[-1].target='ACCEPT'
 uci set firewall.@rule[-1].proto='ICMP'
 uci set firewall.@rule[-1].icmp_type='echo-request'
@@ -10,7 +10,7 @@ service firewall restart
 
 uci add firewall rule
 uci set firewall.@rule[-1].name='Allow Ping6'
-uci set firewall.@rule[-1].src='wan'
+uci set firewall.@rule[-1].src='lan'
 uci set firewall.@rule[-1].target='ACCEPT'
 uci set firewall.@rule[-1].proto='ICMP'
 uci set firewall.@rule[-1].icmp_type='echo-request'
@@ -23,7 +23,7 @@ uci add firewall rule
 uci set firewall.@rule[-1].name='Block-Public-DNS'
 uci set firewall.@rule[-1].src='lan'
 uci set firewall.@rule[-1].dest='wan'
-uci set firewall.@rule[-1].dest_port='53 853 5353'
+uci set firewall.@rule[-1].dest_port='53 853 5353 9053'
 uci set firewall.@rule[-1].target='REJECT'
 uci commit firewall
 
