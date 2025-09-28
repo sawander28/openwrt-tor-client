@@ -1,3 +1,13 @@
+# Enable ntp server
+uci set system.ntp.enable_server='1'
+uci set system.ntp.enable_server='1'
+uci set system.ntp.interface='lan'
+uci set system.@system[0].timezone='Europe/Berlin'
+uci commit system
+
+uci set luci.main.mediaurlbase=/luci-static/bootstrap-light
+uci commit luci
+
 uci add firewall rule
 uci set firewall.@rule[-1].name='Allow-Ping'
 uci set firewall.@rule[-1].src='lan'
@@ -39,15 +49,6 @@ uci set firewall.@redirect[-1].src_dport='9053'
 uci set firewall.@redirect[-1].dest_port='53'
 uci commit firewall
 service firewall reload
-
-uci set system.ntp.enable_server='1'
-uci set system.@system[0].timezone='Europe/Berlin'
-uci set system.ntp.enable_server='1'
-uci set system.ntp.interface='lan'
-uci commit system
-
-uci set luci.main.mediaurlbase=/luci-static/bootstrap-light
-uci commit luci
 
 # set loopback device as dns for IPv4 & IPv6
 uci set network.lan.peerdns='0'

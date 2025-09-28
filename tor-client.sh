@@ -98,4 +98,3 @@ service network restart
 uci set dhcp.odhcpd.loglevel="3"
 uci commit dhcp
 service odhcpd restart
-~
