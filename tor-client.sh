@@ -2,7 +2,9 @@
 
 # Install packages
 opkg update
-opkg install curl netcat tcpdump ethtool nmap-ssl ss tcpdump tor torsocks socat
+opkg install bind-utils curl ethtool netcat nmap-ssl ss tor torsocks socat tcpdump
+opkg install nfs-utils kmod-fs-nfs-v4
+opkg install snowflake-client snowflake-proxy snowflake-probetest
 
 # Configure Tor client
 cat << EOF > /etc/tor/custom

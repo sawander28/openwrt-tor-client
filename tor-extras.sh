@@ -18,11 +18,6 @@ uci set firewall.@rule[-1].family='ipv6'
 uci commit firewall
 service firewall restart
 
-# Optional: Disable ISP's DNS server
-uci set network.wan.peerdns='0'
-uci set network.wan6.peerdns='0'
-uci commit network
-
 # Optional: Force LAN clients to send DNS queries to dnsmasq (that later will be going to unbound):
 uci add firewall rule
 uci set firewall.@rule[-1].name='Block-Public-DNS'
