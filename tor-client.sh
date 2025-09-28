@@ -13,7 +13,6 @@ VirtualAddrNetworkIPv6 [fc00::]/8
 DNSPort 0.0.0.0:9053
 DNSPort [::]:9053
 TransPort 0.0.0.0:9040
-TransListenAddress 192.168.1.1
 TransPort [::]:9040
 SOCKSPort 0.0.0.0:9050
 SOCKSPort [::]:9050
