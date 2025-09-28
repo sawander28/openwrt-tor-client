@@ -2,7 +2,7 @@
 
 # Install packages
 opkg update
-opkg install curl nertcpdump ethtool nmap-ssl ss tcpdump tor torsocks
+opkg install curl netcat tcpdump ethtool nmap-ssl ss tcpdump tor torsocks socat
 
 # Configure Tor client
 cat << EOF > /etc/tor/custom
