@@ -33,9 +33,9 @@ uci commit firewall
 uci add firewall redirect
 uci set firewall.@redirect[-1].dest='lan'
 uci set firewall.@redirect[-1].target='DNAT'
-uci set firewall.@redirect[-1].name='Divert-DNS, port 5353'
+uci set firewall.@redirect[-1].name='Divert-DNS, port 9053'
 uci set firewall.@redirect[-1].src='lan'
-uci set firewall.@redirect[-1].src_dport='5353'
+uci set firewall.@redirect[-1].src_dport='9053'
 uci set firewall.@redirect[-1].dest_port='53'
 uci commit firewall
 service firewall reload
