@@ -1,5 +1,6 @@
-export LANG=en_US.UTF-8
-export LC_COLLATE=C
+# -*- mode: sh -*-
+
+export LANG=C
 export EDITOR=vim
 export PAGER=less
 
@@ -13,3 +14,4 @@ alias ll='ls -lh'
 alias la='ls -a'
 alias  l='ls -lha'
 alias df='df -h'
+alias free='free -h'
