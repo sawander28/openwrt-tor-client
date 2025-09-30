@@ -28,27 +28,27 @@ uci set firewall.@rule[-1].family='ipv6'
 uci commit firewall
 service firewall restart
 
-# Optional: Force LAN clients to send DNS queries to dnsmasq (that later will be going to unbound):
-uci add firewall rule
-uci set firewall.@rule[-1].name='Block-Public-DNS'
-uci set firewall.@rule[-1].src='lan'
-uci set firewall.@rule[-1].dest='wan'
-uci set firewall.@rule[-1].dest_port='53 853 5353 9053'
-uci set firewall.@rule[-1].target='REJECT'
-uci commit firewall
+# Force LAN clients to send DNS queries to dnsmasq (that later will be going to unbound):
+#uci add firewall rule
+#uci set firewall.@rule[-1].name='Block-Public-DNS'
+#uci set firewall.@rule[-1].src='lan'
+#uci set firewall.@rule[-1].dest='wan'
+#uci set firewall.@rule[-1].dest_port='53 853 5353 9053'
+#uci set firewall.@rule[-1].target='REJECT'
+#uci commit firewall
 
-# 2. Optional: Redirect queries for DNS servers running on non-standard ports.
+# Redirect queries for DNS servers running on non-standard ports.
 # Warning: don't use this one if you run an mDNS server
 # e.g.: 5353
-uci add firewall redirect
-uci set firewall.@redirect[-1].dest='lan'
-uci set firewall.@redirect[-1].target='DNAT'
-uci set firewall.@redirect[-1].name='Divert-DNS, port 9053'
-uci set firewall.@redirect[-1].src='lan'
-uci set firewall.@redirect[-1].src_dport='9053'
-uci set firewall.@redirect[-1].dest_port='53'
-uci commit firewall
-service firewall reload
+#uci add firewall redirect
+#uci set firewall.@redirect[-1].dest='lan'
+#uci set firewall.@redirect[-1].target='DNAT'
+#uci set firewall.@redirect[-1].name='Divert-DNS, port 9053'
+#uci set firewall.@redirect[-1].src='lan'
+#uci set firewall.@redirect[-1].src_dport='9053'
+#uci set firewall.@redirect[-1].dest_port='53'
+#uci commit firewall
+#service firewall reload
 
 # set loopback device as dns for IPv4 & IPv6
 uci set network.lan.peerdns='0'
