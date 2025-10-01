@@ -26,8 +26,8 @@ service tor-hs restart
 TOR_HOST="$(cat /etc/tor/hidden_service/ssh/hostname)"
 
 # Access onion service from Tor client
-opkg update
-opkg install torsocks
+#opkg update
+#opkg install torsocks
 
 # Access onion service
-torsocks ssh $TOR_HOST
+#torsocks ssh $TOR_HOST

@@ -1,8 +1,8 @@
 # Enable ntp server
 uci set system.@system[0].name='openwrt'
-uci set system.@system[0].timezone='UTC'
+uci set system.@system[0].timezone='Europe/Berlin'
 # Enable ntp server
-# allow zone lan to sync ntp
+# allow lan to use ntp-server
 uci set system.ntp.enable_server='1'
 uci set system.ntp.interface='lan'
 uci commit system
