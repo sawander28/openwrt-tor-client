@@ -1,9 +1,13 @@
 # Enable ntp server
+uci set system.@system[0].name='openwrt'
+uci set system.@system[0].timezone='UTC'
+# Enable ntp server
+# allow zone lan to sync ntp
 uci set system.ntp.enable_server='1'
 uci set system.ntp.interface='lan'
-uci set system.@system[0].timezone='Europe/Berlin'
 uci commit system
 
+# no dark theme
 uci set luci.main.mediaurlbase=/luci-static/bootstrap-light
 uci commit luci
 
@@ -49,6 +53,8 @@ service firewall restart
 #uci commit firewall
 #service firewall reload
 
+# -*- Hide DNS behind loopback device  -*-
+
 # set loopback device as dns for IPv4 & IPv6
 uci set network.lan.peerdns='0'
 uci set network.lan.dns='127.0.0.1'
@@ -66,20 +72,31 @@ uci set network.wan6.dns='::1'
 uci set network.wan6.dns_metric='30'
 uci commit network
 
+# -*- Static Hostnames -*-
+
 uci add dhcp host
 uci set dhcp.@host[-1].name='z620'
 uci set dhcp.@host[-1].ip='192.168.1.10'
-uci set dhcp.@host[-1].mac='88:51:fb:3f:2c:e4'
-uci set dhcp.@host[-1].duuid='000100013021bb048851fb3f2ce4'
+uci set dhcp.@host[-1].mac= '88:51:fb:15:96:a3' # permaddr 88:51:fb:3f:2c:e4
+uci set dhcp.@host[-1].duuid='00010001306fc2458851fb1596a3'
 uci set dhcp.@host[-1].leasetime='12h'
 uci set dhcp.@host[-1].dns='1'
 uci commit dhcp
 
 uci add dhcp host
-uci set dhcp.@host[-1].name='z620'
-uci set dhcp.@host[-1].ip='192.168.1.20'
-uci set dhcp.@host[-1].mac='88:51:fb:3f:2c:e5'
-uci set dhcp.@host[-1].duuid='000100013021bb048851fb3f2ce4'
+uci set dhcp.@host[-1].name='void'
+uci set dhcp.@host[-1].ip='192.168.1.100'
+uci set dhcp.@host[-1].mac='88:51:fb:77:e5:d1' # permaddr 88:51:fb:3f:2c:e5
+uci set dhcp.@host[-1].duuid='00:01:00:01:30:6f:c2:91:88:51:fb:77:e5:d1'
+uci set dhcp.@host[-1].leasetime='12h'
+uci set dhcp.@host[-1].dns='1'
+uci commit dhcp
+
+uci add dhcp host
+uci set dhcp.@host[-1].name='rpi3'
+uci set dhcp.@host[-1].ip='192.168.1.3'
+uci set dhcp.@host[-1].mac='b8:27:eb:c9:aa:ca'
+uci set dhcp.@host[-1].duuid='00010001306fc6cdb827ebc9aaca'
 uci set dhcp.@host[-1].leasetime='12h'
 uci set dhcp.@host[-1].dns='1'
 uci commit dhcp
@@ -87,8 +104,11 @@ uci commit dhcp
 uci add dhcp host
 uci set dhcp.@host[-1].name='rpi3'
 uci set dhcp.@host[-1].ip='192.168.1.2'
-uci set dhcp.@host[-1].mac='C8:A3:62:B9:A5:DE'
-uci set dhcp.@host[-1].duuid='00010001c792bc86b827ebc9aaca'
+uci set dhcp.@host[-1].mac='c8:a3:62:b9:a5:de'
+uci set dhcp.@host[-1].duuid='00010001306fc707c8a362b9a5de'
 uci set dhcp.@host[-1].leasetime='12h'
 uci set dhcp.@host[-1].dns='1'
 uci commit dhcp
+uci add dhcp host
+
+# -*- End of file -*-
