@@ -114,8 +114,8 @@ uci add dhcp host
 uci add dhcp host
 uci set dhcp.@host[-1].name='switch'
 uci set dhcp.@host[-1].ip='192.168.1.234'
-uci set dhcp.@host[-1].mac='28:94:01:66:10:9D'
-uci set dhcp.@host[-1].duuid='00010001306fcc0928940166109d'
+uci set dhcp.@host[-1].mac='28:94:01:66:10:9d'
+uci set dhcp.@host[-1].duuid='00010001306ff54228940166109d'
 uci set dhcp.@host[-1].leasetime='12h'
 uci set dhcp.@host[-1].dns='1'
 uci commit dhcp
