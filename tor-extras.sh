@@ -87,7 +87,7 @@ uci add dhcp host
 uci set dhcp.@host[-1].name='void'
 uci set dhcp.@host[-1].ip='192.168.1.100'
 uci set dhcp.@host[-1].mac='88:51:fb:77:e5:d1' # permaddr 88:51:fb:3f:2c:e5
-uci set dhcp.@host[-1].duuid='00:01:00:01:30:6f:c2:91:88:51:fb:77:e5:d1'
+uci set dhcp.@host[-1].duuid='00010001306fc2918851fb77e5d1'
 uci set dhcp.@host[-1].leasetime='12h'
 uci set dhcp.@host[-1].dns='1'
 uci commit dhcp
@@ -106,6 +106,16 @@ uci set dhcp.@host[-1].name='rpi3'
 uci set dhcp.@host[-1].ip='192.168.1.2'
 uci set dhcp.@host[-1].mac='c8:a3:62:b9:a5:de'
 uci set dhcp.@host[-1].duuid='00010001306fc707c8a362b9a5de'
+uci set dhcp.@host[-1].leasetime='12h'
+uci set dhcp.@host[-1].dns='1'
+uci commit dhcp
+uci add dhcp host
+
+uci add dhcp host
+uci set dhcp.@host[-1].name='switch'
+uci set dhcp.@host[-1].ip='192.168.1.234'
+uci set dhcp.@host[-1].mac='28:94:01:66:10:9D'
+uci set dhcp.@host[-1].duuid='00010001306fcc0928940166109d'
 uci set dhcp.@host[-1].leasetime='12h'
 uci set dhcp.@host[-1].dns='1'
 uci commit dhcp
