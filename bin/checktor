@@ -1,3 +1,0 @@
-#!/bin/sh
-curl -x 127.0.0.1:9050 https://check.torproject.org/api/ip
-printf "\n"

@@ -5,7 +5,7 @@ apk update
 apk add tor
 
 # Configure Tor client
-cat << EOF > /etc/tor/custom
+cat << EOF > /etc/tor/torrc_custom
 AutomapHostsOnResolve 1
 AutomapHostsSuffixes .
 VirtualAddrNetworkIPv4 172.16.0.0/12
@@ -20,8 +20,8 @@ EOF
 cat << EOF >> /etc/sysupgrade.conf
 /etc/tor
 EOF
-uci del_list tor.conf.tail_include="/etc/tor/custom"
-uci add_list tor.conf.tail_include="/etc/tor/custom"
+uci del_list tor.conf.tail_include="/etc/tor/torrc_custom"
+uci add_list tor.conf.tail_include="/etc/tor/torrc_custom"
 uci commit tor
 service tor restart
 
