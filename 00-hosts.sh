@@ -5,7 +5,7 @@
 uci add dhcp host
 uci set dhcp.@host[-1].name='void'
 uci set dhcp.@host[-1].ip='192.168.1.10'
-uci set dhcp.@host[-1].mac= '88:51:fb:15:96:a3'
+uci set dhcp.@host[-1].mac='88:51:fb:15:96:a3'
 uci set dhcp.@host[-1].leasetime='12h'
 uci set dhcp.@host[-1].dns='1'
 uci commit dhcp

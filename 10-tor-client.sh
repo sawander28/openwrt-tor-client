@@ -2,9 +2,7 @@
 
 # Install packages
 apk update
-apk add luci curl openssh-sftp-server
-apk add tcpdump ethtool nmap-ssl socat netcat
-apk add tor torsocks snowflake-client
+apk add tor
 
 # Configure Tor client
 cat << EOF > /etc/tor/custom
