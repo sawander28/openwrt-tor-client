@@ -1,8 +1,10 @@
 #!/bin/sh
 
 # Install packages
-opkg update
-opkg install curl netcat tcpdump ethtool nmap-ssl ss tcpdump tor torsocks socat
+apk update
+apk add luci curl openssh-sftp-server
+apk add tcpdump ethtool nmap-ssl socat netcat
+apk add tor torsocks snowflake-client
 
 # Configure Tor client
 cat << EOF > /etc/tor/custom
@@ -78,23 +80,43 @@ uci -q delete firewall.@forwarding[0]
 uci commit firewall
 service firewall restart
 
-# Disable GUA prefix
+# set loopback device as dns for IPv4 & IPv6
+uci set network.lan.peerdns='0'
+uci set network.lan.dns='127.0.0.1'
+uci set network.lan.dns='::1'
+uci set network.lan.dns_metric='10'
+uci commit network
+
+uci set network.wan.peerdns='0'
+uci set network.wan.dns='127.0.0.1'
+uci set network.wan.dns_metric='20'
+uci commit network
+
+uci set network.wan6.peerdns='0'
+uci set network.wan6.dns='::1'
+uci set network.wan6.dns_metric='30'
+uci commit network
+
+# Disable GUA prefix -> Annpounce IPv6 default route
 uci set network.lan.ip6class="local"
 uci commit network
 service network restart
 
-# Announce IPv6 default route
+# IPv6 default
 uci set dhcp.lan.ra_default='1'
-uci commit dhcp.lan
-service network restart
+uci commit dhcp
+service odhcpd restart
 
-# Using IPv6 by default
+# Using IPv6 by default:
 NET_ULA="$(uci get network.globals.ula_prefix)"
 uci set network.globals.ula_prefix="d${NET_ULA:1}"
 uci commit network
 service network restart
 
-# Missing GUA prefix
 uci set dhcp.odhcpd.loglevel="3"
 uci commit dhcp
 service odhcpd restart
+
+service dnsmasq restart
+service network restart
+service firewall restart
